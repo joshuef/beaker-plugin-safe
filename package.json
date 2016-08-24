@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/joshuef/beaker-plugin-safe/issues"
   },
-  "homepage": "https://github.com/joshuef/beaker-plugin-safe#readme"
+  "homepage": "https://github.com/joshuef/beaker-plugin-safe#readme",
+  "dependencies": {
+    "url": "^0.11.0"
+  }
 }

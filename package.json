@@ -4,7 +4,9 @@
   "description": "Beaker browser plugin for SAFE Network safe: protocol routing.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish-please": "publish-please",
+    "prepublish": "publish-please guard"
   },
   "repository": {
     "type": "git",
@@ -18,7 +20,7 @@
     "plugin",
     "protocol"
   ],
-  "author": "Josh Wilson",
+  "author": "Josh Wilson <joshuef@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/joshuef/beaker-plugin-safe/issues"
@@ -26,9 +28,12 @@
   "homepage": "https://github.com/joshuef/beaker-plugin-safe#readme",
   "dependencies": {
     "url": "^0.11.0"
-},
+  },
   "peerDependencies": {
     "electron": "^1.3.3",
-    "loglevel": "^1.4.1",
+    "loglevel": "^1.4.1"
+  },
+  "devDependencies": {
+    "publish-please": "^2.2.0"
   }
 }

@@ -8,5 +8,6 @@
     "gitTag": true
   },
   "confirm": true,
-  "publishTag": "latest"
+  "publishTag": "latest",
+  "prePublishScript": false
 }

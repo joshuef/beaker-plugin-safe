@@ -1,6 +1,6 @@
 {
   "name": "beaker-plugin-safe",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Beaker browser plugin for SAFE Network safe: protocol routing.",
   "main": "index.js",
   "scripts": {

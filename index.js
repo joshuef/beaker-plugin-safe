@@ -3,17 +3,9 @@ const { protocol }  = require('electron')
 const url           = require('url')
 const safeProtocol  = require('./protocols/safe')
 const log           = require('loglevel')
+const safejs        = require('safe-js')
 
 
-
-
-// content security policies
-const CSP = "default-src 'self'; plugin-types 'none';"
-
-const boom = function( thing )
-{
-    return '' + thing;
-}
 
 module.exports = {
     configure (opts) {
@@ -29,10 +21,10 @@ module.exports = {
         name: 'safe',
         isInternal: true,
         manifest: {
-            safeLog: 'sync'
+            sendAuthorisationRequest: 'promise'
         },
         methods: {
-            safeLog: boom
+            sendAuthorisationRequest: safejs.utils.sendAuthorisationRequest
         }
     }]
 }

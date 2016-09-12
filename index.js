@@ -6,6 +6,7 @@ const log           = require('loglevel')
 const safejs        = require('safe-js')
 
 
+console.log( 'safejsutils', safejs.utils.manifest );
 
 module.exports = {
     configure (opts) {
@@ -18,13 +19,22 @@ module.exports = {
     }],
     protocols: [ safeProtocol ],
     webAPIs: [{
-        name: 'safe',
+        name: 'safeAuth',
         isInternal: true,
-        manifest: {
-            sendAuthorisationRequest: 'promise'
-        },
-        methods: {
-            sendAuthorisationRequest: safejs.utils.sendAuthorisationRequest
-        }
-    }]
+        manifest: safejs.utils.manifest,
+        methods: safejs.utils
+    },
+    {
+        name: 'safeDNS',
+        isInternal: true,
+        manifest: safejs.dns.manifest,
+        methods: safejs.dns
+    },
+    {
+        name: 'safeNFS',
+        isInternal: true,
+        manifest: safejs.nfs.manifest,
+        methods: safejs.nfs
+    }
+]
 }

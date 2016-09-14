@@ -21,8 +21,8 @@ module.exports = {
     webAPIs: [{
         name: 'safeAuth',
         isInternal: true,
-        manifest: safejs.utils.manifest,
-        methods: safejs.utils
+        manifest: safejs.auth.manifest,
+        methods: safejs.auth
     },
     {
         name: 'safeDNS',

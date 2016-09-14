@@ -5,9 +5,6 @@ const safeProtocol  = require('./protocols/safe')
 const log           = require('loglevel')
 const safejs        = require('safe-js')
 
-
-console.log( 'safejsutils', safejs.utils.manifest );
-
 module.exports = {
     configure (opts) {
         if (opts.logLevel)

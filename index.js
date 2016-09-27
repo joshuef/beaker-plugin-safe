@@ -32,6 +32,24 @@ module.exports = {
         isInternal: true,
         manifest: safejs.nfs.manifest,
         methods: safejs.nfs
+    },
+    {
+        name: 'structuredData',
+        isInternal: true,
+        manifest: safejs.structuredData.manifest,
+        methods: safejs.structuredData
+    },
+    {
+        name: 'appendableData',
+        isInternal: true,
+        manifest: safejs.appendableData.manifest,
+        methods: safejs.appendableData
+    },
+    {
+        name: 'dataId',
+        isInternal: true,
+        manifest: safejs.dataId.manifest,
+        methods: safejs.dataId
     }
 ]
 }

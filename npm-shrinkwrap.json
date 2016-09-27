@@ -1003,7 +1003,7 @@
     "safe-js": {
       "version": "0.0.14",
       "from": "safe-js@0.0.14",
-      "resolved": "git://github.com/krishnaindia/safe-js.git#e5a912ade9bf54dca23f53c91d1451fa61ea5c4c"
+      "resolved": "git://github.com/krishnaindia/safe-js.git#0f05d061a7059481235e32a3d9c47472c7ccc911"
     },
     "semver": {
       "version": "5.3.0",

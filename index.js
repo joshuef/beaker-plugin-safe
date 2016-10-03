@@ -34,22 +34,34 @@ module.exports = {
         methods: safejs.nfs
     },
     {
-        name: 'structuredData',
+        name: 'safeStructuredData',
         isInternal: true,
         manifest: safejs.structuredData.manifest,
         methods: safejs.structuredData
     },
     {
-        name: 'appendableData',
+        name: 'safeAppendableData',
         isInternal: true,
         manifest: safejs.appendableData.manifest,
         methods: safejs.appendableData
     },
     {
-        name: 'dataId',
+        name: 'safeDataId',
         isInternal: true,
         manifest: safejs.dataId.manifest,
         methods: safejs.dataId
+    },
+    {
+        name: 'safeCipherOpts',
+        isInternal: true,
+        manifest: safejs.cipherOpts.manifest,
+        methods: safejs.cipherOpts
+    },
+    {
+        name: 'safeSignKey',
+        isInternal: true,
+        manifest: safejs.signKey.manifest,
+        methods: safejs.signKey
     }
 ]
 }

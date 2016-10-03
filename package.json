@@ -21,14 +21,14 @@
     "protocol"
   ],
   "author": "Josh Wilson <joshuef@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/joshuef/beaker-plugin-safe/issues"
   },
   "homepage": "https://github.com/joshuef/beaker-plugin-safe#readme",
   "dependencies": {
     "loglevel": "^1.4.1",
-    "safe-js": "0.1.0",
+    "safe-js": "0.1.1",
     "url": "^0.11.0"
   },
   "peerDependencies": {

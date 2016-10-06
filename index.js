@@ -62,6 +62,12 @@ module.exports = {
         isInternal: true,
         manifest: safejs.signKey.manifest,
         methods: safejs.signKey
+    },
+    {
+        name: 'safeImmutableData',
+        isInternal: true,
+        manifest: safejs.immutableData.manifest,
+        methods: safejs.immutableData
     }
 ]
 }

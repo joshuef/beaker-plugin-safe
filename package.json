@@ -28,7 +28,7 @@
   "homepage": "https://github.com/joshuef/beaker-plugin-safe#readme",
   "dependencies": {
     "loglevel": "^1.4.1",
-    "safe-js": "0.1.5",
+    "safe-js": "0.2.0",
     "url": "^0.11.0"
   },
   "peerDependencies": {

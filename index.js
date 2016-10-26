@@ -5,6 +5,106 @@ const safeProtocol  = require('./protocols/safe')
 const log           = require('loglevel')
 const safejs        = require('safe-js')
 
+
+// add auth wrapper here. and localStorage
+
+
+var tokenStore = {};
+var beakerSafeJS = Object.assign( {}, safejs.auth );
+// localStorage shim for node
+
+
+// const localStorageExists =  ( typeof localStorage === 'undefined' ) ? false : true ;
+
+// var beakerSafeJS = ;
+
+var sendAuthorisationRequest = safejs.auth.authorise;
+
+
+const getAuthToken = function( tokenKey )
+{
+    if( !tokenKey )
+    {
+        return Promise.reject( 'tokenKey is missing.');
+    }
+    
+    return tokenStore[ tokenKey ];
+};
+
+// export const getUserLongName = function( longNameKey, localStorage ) {
+//     return localStorage.getItem(longNameKey);
+// };
+const setAuthToken = function( tokenKey, token )
+{
+    if( !tokenKey )
+    {
+        return Promise.reject( 'tokenKey is missing.');
+    }
+    
+    if( !token )
+    {
+        return Promise.reject( 'token is missing.');
+    }
+    
+    tokenStore[ tokenKey ] = token ;
+    
+    return Promise.resolve( true );
+};
+
+
+// export const setUserLongName = function(longNameKey, longName) {
+//     localStorage.setItem(longNameKey, longName);
+// };
+
+const authorise = function( packageData )
+{   
+    // for beaker only.
+    // TODO: remove this from safejs as its a beaker only setup
+        const wholeUrl = this.sender.getURL()
+        const parsedUrl = url.parse( wholeUrl );
+        var tokenString = parsedUrl.hostname;
+        
+        //override vendor with the url?
+        if( packageData )
+            packageData.vendor = wholeUrl;
+        
+
+    let tokenFromStorage = getAuthToken( tokenString );
+    
+    return safejs.auth.isTokenValid( tokenFromStorage )
+        .then( response => 
+        {
+            if( response )
+            {
+                return Promise.resolve( {
+                    token: tokenFromStorage,
+                    checkedOut: true
+                });
+            }
+            
+            if ( !response ) 
+            {
+                setAuthToken( tokenString, null );
+
+                return sendAuthorisationRequest( packageData )
+                .then( response =>
+                    {
+                        let token = response.token;
+                        setAuthToken( tokenString, token )
+            
+                        return Promise.resolve( response );                        
+                    });
+            }
+        });
+    
+};
+
+beakerSafeJS.authorise = authorise;
+
+
+
+
+
 module.exports = {
     configure (opts) {
         if (opts.logLevel)
@@ -19,7 +119,7 @@ module.exports = {
         name: 'safeAuth',
         isInternal: true,
         manifest: safejs.auth.manifest,
-        methods: safejs.auth
+        methods: beakerSafeJS
     },
     {
         name: 'safeDNS',
